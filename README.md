@@ -1,6 +1,6 @@
 # FlashTab — 秒开页
 
-**极简极速的新标签页扩展，为 Chrome / Edge 打造。**
+**极简极速的新标签页扩展，为 Edge / Chrome 打造。**
 
 [English](#english)
 
@@ -23,6 +23,13 @@
 2. 打开 `edge://extensions`（或 `chrome://extensions`）
 3. 开启 **开发者模式**
 4. 点击 **加载已解压的扩展程序**，选择本文件夹
+
+## Edge Add-ons 商店发布
+
+本扩展已适配 Microsoft Edge Add-ons 商店要求：
+- Manifest V3 兼容
+- 零用户数据收集
+- 权限最小化原则
 
 ## 隐私政策
 
@@ -56,7 +63,7 @@ FlashTab（秒开页）不收集任何用户数据。所有设置通过 `localSt
 
 ## English
 
-**A blazing fast, minimalist new tab extension for Chrome and Edge.**
+**A blazing fast, minimalist new tab extension for Edge and Chrome.**
 
 ### Features
 

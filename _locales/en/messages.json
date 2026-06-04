@@ -4,7 +4,7 @@
     "description": "Extension name"
   },
   "extDescription": {
-    "message": "Blazing fast, minimalist local new tab extension with drag-and-drop site grid, search engine switching, background customization, clock display, bookmark import, and data backup.",
+    "message": "Blazing fast, minimalist new tab with drag-and-drop shortcuts, search switching, backgrounds, clock, bookmark import & data backup.",
     "description": "Extension description"
   },
   "pageTitle": {

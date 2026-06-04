@@ -29,19 +29,21 @@ function applyI18n() {
 var DEFAULTS = {
   sites: [
     {id:'s1',name:'Google',url:'https://www.google.com',iconUrl:''},
-    {id:'s2',name:'YouTube',url:'https://www.youtube.com',iconUrl:''},
-    {id:'s3',name:'GitHub',url:'https://github.com',iconUrl:''},
-    {id:'s4',name:'Twitter',url:'https://x.com',iconUrl:''},
-    {id:'s5',name:'Gmail',url:'https://mail.google.com',iconUrl:''},
-    {id:'s6',name:'知乎',url:'https://www.zhihu.com',iconUrl:''},
-    {id:'s7',name:'Bilibili',url:'https://www.bilibili.com',iconUrl:''},
-    {id:'s8',name:'V2EX',url:'https://www.v2ex.com',iconUrl:''},
-    {id:'s9',name:'淘宝',url:'https://s.click.taobao.com/REPLACE_WITH_YOUR_AFFILIATE_ID',iconUrl:''}
+    {id:'s2',name:'百度',url:'https://www.baidu.com',iconUrl:''},
+    {id:'s3',name:'Gemini',url:'https://gemini.google.com/app',iconUrl:''},
+    {id:'s4',name:'DeepSeek',url:'https://chat.deepseek.com/',iconUrl:''},
+    {id:'s5',name:'ChatGPT',url:'https://chatgpt.com/',iconUrl:''},
+    {id:'s6',name:'DuckAI',url:'https://duck.ai/',iconUrl:''},
+    {id:'s7',name:'YouTube',url:'https://www.youtube.com',iconUrl:''},
+    {id:'s8',name:'Bilibili',url:'https://www.bilibili.com',iconUrl:''},
+    {id:'s9',name:'淘宝',url:'https://www.taobao.com/',iconUrl:''},
+    {id:'s10',name:'天猫',url:'https://www.tmall.com/',iconUrl:''},
+    {id:'s11',name:'京东',url:'https://www.jd.com/',iconUrl:''}
   ],
-  layout:{cols:6,iconSize:84,radius:16,gap:16,fontSize:13,showTitle:true},
+  layout:{cols:7,iconSize:65,radius:30,gap:26,fontSize:14,showTitle:true},
   background:{type:'color',color:'#1a1a2e',imageData:'',blur:0,overlay:0},
-  settings:{showSearch:true,searchEngine:'https://www.google.com/search?q=',showClock:true,showSeconds:true,openInNewTab:false},
-  version:4
+  settings:{showSearch:true,searchEngine:'https://www.google.com/search?q=',showClock:true,showSeconds:false,openInNewTab:false},
+  version:5
 };
 
 var STORE_KEY = 'pnt_data';
@@ -85,10 +87,29 @@ function cacheDom() {
 function migrateData(d) {
   var l = d.layout, b = d.background, s = d.settings;
   if (!l || typeof l !== 'object') d.layout = Object.assign({}, DEFAULTS.layout);
-  else { if (l.cols === undefined) l.cols = 6; if (l.showTitle === undefined) l.showTitle = true; }
+  else {
+    if (l.cols === undefined) l.cols = DEFAULTS.layout.cols;
+    if (l.showTitle === undefined) l.showTitle = true;
+    if (l.iconSize === undefined) l.iconSize = DEFAULTS.layout.iconSize;
+    if (l.radius === undefined) l.radius = DEFAULTS.layout.radius;
+    if (l.gap === undefined) l.gap = DEFAULTS.layout.gap;
+    if (l.fontSize === undefined) l.fontSize = DEFAULTS.layout.fontSize;
+  }
   if (!b || typeof b !== 'object') d.background = Object.assign({}, DEFAULTS.background);
-  if (!s || typeof s !== 'object') { d.settings = Object.assign({}, DEFAULTS.settings); }
-  else { if (s.showSeconds === undefined) s.showSeconds = true; if (s.openInNewTab === undefined) s.openInNewTab = false; }
+  else {
+    if (b.blur === undefined) b.blur = 0;
+    if (b.overlay === undefined) b.overlay = 0;
+    if (b.imageOriginal === undefined) b.imageOriginal = '';
+    if (b.blurredData === undefined) b.blurredData = '';
+  }
+  if (!s || typeof s !== 'object') d.settings = Object.assign({}, DEFAULTS.settings);
+  else {
+    if (s.showSeconds === undefined) s.showSeconds = false;
+    if (s.openInNewTab === undefined) s.openInNewTab = false;
+    if (s.showSearch === undefined) s.showSearch = true;
+    if (s.showClock === undefined) s.showClock = true;
+  }
+  if (!Array.isArray(d.sites)) d.sites = DEFAULTS.sites;
   return d;
 }
 function loadData() {
@@ -119,7 +140,7 @@ function loadData() {
 
 var _lastJson = null;
 function saveData(d) {
-  d.version = 4;
+  d.version = 5;
   var json = JSON.stringify(d);
   if (json === _lastJson) return;
   _lastJson = json;
