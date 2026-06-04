@@ -26,6 +26,7 @@ function applyI18n() {
 }
 
 /* === 默认数据 === */
+
 var DEFAULTS = {
   sites: [
     {id:'s1',name:'Google',url:'https://www.google.com',iconUrl:''},
@@ -40,8 +41,8 @@ var DEFAULTS = {
     {id:'s10',name:'天猫',url:'https://www.tmall.com/',iconUrl:''},
     {id:'s11',name:'京东',url:'https://www.jd.com/',iconUrl:''}
   ],
-  layout:{cols:7,iconSize:65,radius:30,gap:26,fontSize:14,showTitle:true},
-  background:{type:'color',color:'#1a1a2e',imageData:'',blur:0,overlay:0},
+  layout:{cols:12,iconSize:65,radius:30,gap:26,fontSize:14,showTitle:true},
+  background:{type:'image',color:'#1a1a2e',imageData:'',blur:6,overlay:0},
   settings:{showSearch:true,searchEngine:'https://www.google.com/search?q=',showClock:true,showSeconds:false,openInNewTab:false},
   version:5
 };
@@ -178,6 +179,17 @@ function debounce(fn, ms) {
 }
 
 /* === 渲染：背景 === */
+var _defaultBgUrl = null;
+function getDefaultBgUrl() {
+  if (_defaultBgUrl) return _defaultBgUrl;
+  if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.getURL) {
+    _defaultBgUrl = chrome.runtime.getURL('default/bg.jpg');
+  } else {
+    _defaultBgUrl = 'default/bg.jpg';
+  }
+  return _defaultBgUrl;
+}
+
 function applyBg() {
   var bg = data.background;
   $bg.style.filter = '';
@@ -185,9 +197,10 @@ function applyBg() {
   if (bg.type === 'color') {
     $bg.style.backgroundImage = 'none';
     $bg.style.backgroundColor = bg.color;
-  } else if (bg.type === 'image' && bg.imageData) {
+  } else if (bg.type === 'image') {
+    var src = bg.imageData || getDefaultBgUrl();
     var usePreBlur = bg.blurredData && bg.blur > 0;
-    $bg.style.backgroundImage = 'url(' + (usePreBlur ? bg.blurredData : bg.imageData) + ')';
+    $bg.style.backgroundImage = 'url(' + (usePreBlur ? bg.blurredData : src) + ')';
     if (!usePreBlur && bg.blur > 0) {
       $bg.style.filter = 'blur(' + bg.blur + 'px)';
       $bg.style.transform = 'scale(1.05)';
