@@ -1,231 +1,231 @@
 {
   "extName": {
-    "message": "FlashTab - 自定义新标签页",
+    "message": "FlashTab - Custom New Tab",
     "description": "Extension name"
   },
   "extDescription": {
-    "message": "轻量级本地自定义新标签页，支持快捷网站管理、搜索引擎切换、背景自定义、时钟显示、收藏夹导入与数据导入导出。",
+    "message": "Lightweight local custom new tab page with quick site management, search engine switching, background customization, clock display, bookmark import, and data backup.",
     "description": "Extension description"
   },
   "pageTitle": {
-    "message": "新标签页",
+    "message": "New Tab",
     "description": "Page title"
   },
   "searchPlaceholder": {
-    "message": "搜索...",
+    "message": "Search...",
     "description": "Search input placeholder"
   },
   "titleAddSite": {
-    "message": "添加网站",
+    "message": "Add Site",
     "description": "Add button title"
   },
   "titleSettings": {
-    "message": "设置",
+    "message": "Settings",
     "description": "Settings button and panel title"
   },
   "modalTitleAdd": {
-    "message": "添加网站",
+    "message": "Add Site",
     "description": "Modal title when adding"
   },
   "modalTitleEdit": {
-    "message": "编辑网站",
+    "message": "Edit Site",
     "description": "Modal title when editing"
   },
   "labelName": {
-    "message": "名称",
+    "message": "Name",
     "description": "Name field label"
   },
   "placeholderName": {
-    "message": "例如：Google",
+    "message": "e.g. Google",
     "description": "Name input placeholder"
   },
   "labelUrl": {
-    "message": "网址",
+    "message": "URL",
     "description": "URL field label"
   },
   "labelCustomIcon": {
-    "message": "自定义图标（可选）",
+    "message": "Custom Icon (optional)",
     "description": "Custom icon field label"
   },
   "labelImportBookmarks": {
-    "message": "从收藏夹导入",
+    "message": "Import from Bookmarks",
     "description": "Bookmark import label"
   },
   "btnCancel": {
-    "message": "取消",
+    "message": "Cancel",
     "description": "Cancel button"
   },
   "btnDelete": {
-    "message": "删除",
+    "message": "Delete",
     "description": "Delete button"
   },
   "btnSave": {
-    "message": "保存",
+    "message": "Save",
     "description": "Save button"
   },
   "sectionLayout": {
-    "message": "布局",
+    "message": "Layout",
     "description": "Layout section heading"
   },
   "labelColumns": {
-    "message": "每行图标数",
+    "message": "Columns",
     "description": "Columns per row label"
   },
   "labelIconSize": {
-    "message": "图标大小",
+    "message": "Icon Size",
     "description": "Icon size label"
   },
   "labelRadius": {
-    "message": "圆角",
+    "message": "Radius",
     "description": "Border radius label"
   },
   "labelGap": {
-    "message": "间距",
+    "message": "Gap",
     "description": "Gap between icons label"
   },
   "labelFontSize": {
-    "message": "字体大小",
+    "message": "Font Size",
     "description": "Font size label"
   },
   "labelShowTitle": {
-    "message": "显示标题",
+    "message": "Show Title",
     "description": "Show title toggle label"
   },
   "sectionClock": {
-    "message": "时钟",
+    "message": "Clock",
     "description": "Clock section heading"
   },
   "labelShowClock": {
-    "message": "显示时钟",
+    "message": "Show Clock",
     "description": "Show clock toggle label"
   },
   "labelShowSeconds": {
-    "message": "显示秒数",
+    "message": "Show Seconds",
     "description": "Show seconds toggle label"
   },
   "sectionBackground": {
-    "message": "背景",
+    "message": "Background",
     "description": "Background section heading"
   },
   "labelBgType": {
-    "message": "背景类型",
+    "message": "Background Type",
     "description": "Background type label"
   },
   "optColor": {
-    "message": "纯色",
+    "message": "Solid Color",
     "description": "Background type option: solid color"
   },
   "optImage": {
-    "message": "图片",
+    "message": "Image",
     "description": "Background type option: image"
   },
   "labelBgColor": {
-    "message": "背景颜色",
+    "message": "Background Color",
     "description": "Background color label"
   },
   "labelBgImage": {
-    "message": "背景图片",
+    "message": "Background Image",
     "description": "Background image label"
   },
   "labelBlur": {
-    "message": "模糊",
+    "message": "Blur",
     "description": "Blur label"
   },
   "labelOverlay": {
-    "message": "遮罩透明度",
+    "message": "Overlay Opacity",
     "description": "Overlay opacity label"
   },
   "sectionSearch": {
-    "message": "搜索",
+    "message": "Search",
     "description": "Search section heading"
   },
   "labelShowSearch": {
-    "message": "显示搜索框",
+    "message": "Show Search Box",
     "description": "Show search box toggle label"
   },
   "labelSearchEngine": {
-    "message": "搜索引擎",
+    "message": "Search Engine",
     "description": "Search engine label"
   },
   "sectionLinks": {
-    "message": "链接",
+    "message": "Links",
     "description": "Links section heading"
   },
   "labelOpenInNewTab": {
-    "message": "新标签页打开",
+    "message": "Open in New Tab",
     "description": "Open in new tab toggle label"
   },
   "sectionData": {
-    "message": "数据",
+    "message": "Data",
     "description": "Data section heading"
   },
   "btnExport": {
-    "message": "导出",
+    "message": "Export",
     "description": "Export button"
   },
   "btnImport": {
-    "message": "导入",
+    "message": "Import",
     "description": "Import button"
   },
   "btnReset": {
-    "message": "恢复默认",
+    "message": "Reset to Default",
     "description": "Reset button"
   },
   "ctxEdit": {
-    "message": "编辑",
+    "message": "Edit",
     "description": "Context menu edit"
   },
   "ctxDelete": {
-    "message": "删除",
+    "message": "Delete",
     "description": "Context menu delete"
   },
   "bmSearchPlaceholder": {
-    "message": "搜索收藏夹...",
+    "message": "Search bookmarks...",
     "description": "Bookmark search input placeholder"
   },
   "bmMoreItems": {
-    "message": "还有 $COUNT$ 条，输入关键词筛选...",
+    "message": "$COUNT$ more, enter keyword to filter...",
     "description": "Shown when bookmark list exceeds 50 items",
     "placeholders": {
       "count": { "content": "$1" }
     }
   },
   "bmNoMatch": {
-    "message": "无匹配结果",
+    "message": "No matches",
     "description": "No bookmark matches found"
   },
   "confirmDelete": {
-    "message": "确定删除「$NAME$」？",
+    "message": "Delete \"$NAME$\"?",
     "description": "Delete confirmation dialog",
     "placeholders": {
       "name": { "content": "$1" }
     }
   },
   "alertImageTooLarge": {
-    "message": "图片不能超过 10MB",
+    "message": "Image must be under 10MB",
     "description": "Image file size limit alert"
   },
   "errorInvalidFormat": {
-    "message": "格式无效",
+    "message": "Invalid format",
     "description": "Import format error"
   },
   "alertImportSuccess": {
-    "message": "导入成功！",
+    "message": "Import successful!",
     "description": "Import success alert"
   },
   "alertImportFailed": {
-    "message": "导入失败：$MSG$",
+    "message": "Import failed: $MSG$",
     "description": "Import failure alert",
     "placeholders": {
       "msg": { "content": "$1" }
     }
   },
   "confirmReset": {
-    "message": "确定恢复默认？所有数据将被清除。",
+    "message": "Reset to default? All data will be cleared.",
     "description": "Reset confirmation dialog"
   },
   "errorImageLoadFailed": {
-    "message": "图片加载失败",
+    "message": "Failed to load image",
     "description": "Image load error"
   }
 }

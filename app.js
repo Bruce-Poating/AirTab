@@ -1,6 +1,30 @@
 (function(){
 'use strict';
 
+/* === i18n === */
+var clockLocale = (typeof chrome !== 'undefined' && chrome.i18n)
+  ? chrome.i18n.getUILanguage() : navigator.language || 'en';
+
+function msg(key, subs) {
+  if (typeof chrome !== 'undefined' && chrome.i18n) {
+    return chrome.i18n.getMessage(key, subs) || key;
+  }
+  return key;
+}
+
+function applyI18n() {
+  var lang = (typeof chrome !== 'undefined' && chrome.i18n)
+    ? chrome.i18n.getUILanguage() : navigator.language || 'en';
+  document.documentElement.lang = lang;
+  document.title = msg('pageTitle');
+  var els = document.querySelectorAll('[data-i18n]');
+  for (var i = 0; i < els.length; i++) els[i].textContent = msg(els[i].dataset.i18n);
+  var phs = document.querySelectorAll('[data-i18n-placeholder]');
+  for (var j = 0; j < phs.length; j++) phs[j].placeholder = msg(phs[j].dataset.i18nPlaceholder);
+  var tts = document.querySelectorAll('[data-i18n-title]');
+  for (var k = 0; k < tts.length; k++) tts[k].title = msg(tts[k].dataset.i18nTitle);
+}
+
 /* === 默认数据 === */
 var DEFAULTS = {
   sites: [
@@ -231,9 +255,9 @@ function applyVisibility() {
 function tickClock() {
   var now = new Date();
   var s = data.settings.showSeconds;
-  $ctime.textContent = now.toLocaleTimeString('zh-CN', {hour:'2-digit', minute:'2-digit', second: s ? '2-digit' : undefined});
-  $cdate.textContent = now.toLocaleDateString('zh-CN', {year:'numeric', month:'long', day:'numeric'})
-    + '  ' + now.toLocaleDateString('zh-CN', {weekday:'long'});
+  $ctime.textContent = now.toLocaleTimeString(clockLocale, {hour:'2-digit', minute:'2-digit', second: s ? '2-digit' : undefined});
+  $cdate.textContent = now.toLocaleDateString(clockLocale, {year:'numeric', month:'long', day:'numeric'})
+    + '  ' + now.toLocaleDateString(clockLocale, {weekday:'long'});
 }
 var clockMode = null; // 'sec' | 'min'
 function clearClock() {
@@ -422,7 +446,7 @@ function renderBmPicker(list) {
   // 搜索框
   var searchBox = document.createElement('input');
   searchBox.type = 'text';
-  searchBox.placeholder = '搜索收藏夹...';
+  searchBox.placeholder = msg('bmSearchPlaceholder');
   searchBox.className = 'bm-search';
   $bmList.appendChild(searchBox);
 
@@ -474,7 +498,7 @@ function renderBmPicker(list) {
       more.className = 'bm-row';
       more.style.color = 'rgba(255,255,255,.4)';
       more.style.cursor = 'default';
-      more.textContent = '还有 ' + (len - 50) + ' 条，输入关键词筛选...';
+      more.textContent = msg('bmMoreItems', [String(len - 50)]);
       frag.appendChild(more);
     }
     if (len === 0) {
@@ -482,7 +506,7 @@ function renderBmPicker(list) {
       empty.className = 'bm-row';
       empty.style.color = 'rgba(255,255,255,.4)';
       empty.style.cursor = 'default';
-      empty.textContent = '无匹配结果';
+      empty.textContent = msg('bmNoMatch');
       frag.appendChild(empty);
     }
     listWrap.appendChild(frag);
@@ -500,12 +524,12 @@ function openModal(siteId) {
   if (siteId) {
     var s = data.sites.find(function(x) { return x.id === siteId; });
     if (!s) return;
-    $mTitle.textContent = '编辑网站';
+    $mTitle.textContent = msg('modalTitleEdit');
     $mName.value = s.name; $mUrl.value = s.url; $mIco.value = s.iconUrl || '';
     $mDel.style.display = 'inline-block';
     document.getElementById('bmSection').style.display = 'none';
   } else {
-    $mTitle.textContent = '添加网站';
+    $mTitle.textContent = msg('modalTitleAdd');
     $mName.value = ''; $mUrl.value = ''; $mIco.value = '';
     $mDel.style.display = 'none';
     loadBookmarksList(renderBmPicker);
@@ -536,7 +560,7 @@ function saveSite() {
 }
 function deleteSite(id) {
   var s = data.sites.find(function(x) { return x.id === id; });
-  if (!s || !confirm('确定删除「' + s.name.replace(/["'<>&]/g, '') + '」？')) return;
+  if (!s || !confirm(msg('confirmDelete', [s.name.replace(/["'<>&]/g, '')]))) return;
   data.sites = data.sites.filter(function(x) { return x.id !== id; });
   saveData(data);
   renderSites();
@@ -601,7 +625,7 @@ function initSettings() {
   });
   document.getElementById('pBgImg').addEventListener('change', function(e) {
     var file = e.target.files[0]; if (!file) return;
-    if (file.size > 10 * 1024 * 1024) { alert('图片不能超过 10MB'); return; }
+    if (file.size > 10 * 1024 * 1024) { alert(msg('alertImageTooLarge')); return; }
     compressImg(file, data.background.blur).then(function(d) { data.background.imageData = d; doSave(); });
     e.target.value = '';
   });
@@ -624,19 +648,19 @@ function initSettings() {
     reader.onload = function(ev) {
       try {
         var d = JSON.parse(ev.target.result);
-        if (!d.sites || !d.layout) throw new Error('格式无效');
+        if (!d.sites || !d.layout) throw new Error(msg('errorInvalidFormat'));
         data.sites = d.sites;
         data.layout = Object.assign({}, DEFAULTS.layout, d.layout);
         data.background = Object.assign({}, DEFAULTS.background, d.background);
         data.settings = Object.assign({}, DEFAULTS.settings, d.settings);
         saveData(data); refreshAll(); syncPanelUI();
-        alert('导入成功！');
-      } catch(err) { alert('导入失败：' + err.message); }
+        alert(msg('alertImportSuccess'));
+      } catch(err) { alert(msg('alertImportFailed', [err.message])); }
     };
     reader.readAsText(file); e.target.value = '';
   });
   document.getElementById('pReset').addEventListener('click', function() {
-    if (!confirm('确定恢复默认？所有数据将被清除。')) return;
+    if (!confirm(msg('confirmReset'))) return;
     data = JSON.parse(JSON.stringify(DEFAULTS));
     saveData(data); refreshAll(); syncPanelUI();
   });
@@ -736,7 +760,7 @@ function compressImg(file, blur) {
       }
       c.width = 0; c.height = 0;
     };
-    img.onerror = function() { URL.revokeObjectURL(url); reject(new Error('图片加载失败')); };
+    img.onerror = function() { URL.revokeObjectURL(url); reject(new Error(msg('errorImageLoadFailed'))); };
     img.src = url;
   });
 }
@@ -801,6 +825,7 @@ cacheDom();
 var loaded = loadData();
 function init(d) {
   data = d;
+  applyI18n();
   refreshAll();
   requestAnimationFrame(function() { bindEvents(); });
 }

@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "FlashTab",
+  "name": "__MSG_extName__",
   "version": "26.06.01",
-  "description": "轻量级本地自定义新标签页，支持快捷网站管理、搜索引擎切换、背景自定义、时钟显示、收藏夹导入与数据导入导出。",
+  "description": "__MSG_extDescription__",
   "author": "Bruce-Poating",
   "default_locale": "zh_CN",
   "homepage_url": "https://github.com/Bruce-Poating/FlashTab",

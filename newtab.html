@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -14,72 +14,72 @@
     <div id="cdate" class="clock-date"></div>
   </div>
   <div id="searchWrap" class="search">
-    <form id="sform"><input id="sinput" placeholder="搜索..." autocomplete="off"><button type="submit"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button></form>
+    <form id="sform"><input id="sinput" placeholder="搜索..." data-i18n-placeholder="searchPlaceholder" autocomplete="off"><button type="submit"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button></form>
   </div>
   <div id="grid" class="grid"></div>
-  <div class="add-wrap"><button id="addBtn" class="add-btn" title="添加网站"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button></div>
+  <div class="add-wrap"><button id="addBtn" class="add-btn" title="添加网站" data-i18n-title="titleAddSite"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button></div>
 </div>
-<button id="setBtn" class="set-btn" title="设置"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
+<button id="setBtn" class="set-btn" title="设置" data-i18n-title="titleSettings"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
 <!-- 添加/编辑弹窗 -->
 <div id="modalBg" class="modal-bg">
   <div class="modal">
-    <h3 id="mTitle">添加网站</h3>
+    <h3 id="mTitle" data-i18n="modalTitleAdd">添加网站</h3>
     <form id="mForm">
-      <div class="fg"><label>名称</label><input type="text" id="mName" placeholder="例如：Google" required></div>
-      <div class="fg"><label>网址</label><input type="url" id="mUrl" placeholder="https://example.com" required></div>
-      <div class="fg"><label>自定义图标（可选）</label><input type="url" id="mIco" placeholder="https://example.com/icon.png"></div>
+      <div class="fg"><label data-i18n="labelName">名称</label><input type="text" id="mName" placeholder="例如：Google" data-i18n-placeholder="placeholderName" required></div>
+      <div class="fg"><label data-i18n="labelUrl">网址</label><input type="url" id="mUrl" placeholder="https://example.com" required></div>
+      <div class="fg"><label data-i18n="labelCustomIcon">自定义图标（可选）</label><input type="url" id="mIco" placeholder="https://example.com/icon.png"></div>
       <div class="fg" id="bmSection" style="display:none">
-        <label>从收藏夹导入</label>
+        <label data-i18n="labelImportBookmarks">从收藏夹导入</label>
         <div id="bmList" class="bm-list"></div>
       </div>
       <div class="fg-actions">
-        <button type="button" id="mCancel" class="btn btn-s">取消</button>
-        <button type="button" id="mDel" class="btn btn-d" style="display:none">删除</button>
-        <button type="submit" class="btn btn-p">保存</button>
+        <button type="button" id="mCancel" class="btn btn-s" data-i18n="btnCancel">取消</button>
+        <button type="button" id="mDel" class="btn btn-d" style="display:none" data-i18n="btnDelete">删除</button>
+        <button type="submit" class="btn btn-p" data-i18n="btnSave">保存</button>
       </div>
     </form>
   </div>
 </div>
 <!-- 设置面板 -->
 <div id="panel" class="panel">
-  <div class="panel-hd"><h3>设置</h3><button id="pClose" class="panel-close">&times;</button></div>
+  <div class="panel-hd"><h3 data-i18n="titleSettings">设置</h3><button id="pClose" class="panel-close">&times;</button></div>
   <div class="panel-bd">
-    <div class="sec"><h4>布局</h4>
-      <div class="row"><label>每行图标数</label><input type="range" id="pCols" min="3" max="16" step="1" value="6"><span id="pColsV">6</span></div>
-      <div class="row"><label>图标大小</label><input type="range" id="pSize" min="40" max="100" step="5" value="60"><span id="pSizeV">60px</span></div>
-      <div class="row"><label>圆角</label><input type="range" id="pRad" min="0" max="50" step="5" value="16"><span id="pRadV">16px</span></div>
-      <div class="row"><label>间距</label><input type="range" id="pGap" min="8" max="40" step="2" value="16"><span id="pGapV">16px</span></div>
-      <div class="row"><label>字体大小</label><input type="range" id="pFont" min="10" max="20" step="1" value="13"><span id="pFontV">13px</span></div>
-      <div class="row"><label>显示标题</label><input type="checkbox" id="pTitle" checked></div>
+    <div class="sec"><h4 data-i18n="sectionLayout">布局</h4>
+      <div class="row"><label data-i18n="labelColumns">每行图标数</label><input type="range" id="pCols" min="3" max="16" step="1" value="6"><span id="pColsV">6</span></div>
+      <div class="row"><label data-i18n="labelIconSize">图标大小</label><input type="range" id="pSize" min="40" max="100" step="5" value="60"><span id="pSizeV">60px</span></div>
+      <div class="row"><label data-i18n="labelRadius">圆角</label><input type="range" id="pRad" min="0" max="50" step="5" value="16"><span id="pRadV">16px</span></div>
+      <div class="row"><label data-i18n="labelGap">间距</label><input type="range" id="pGap" min="8" max="40" step="2" value="16"><span id="pGapV">16px</span></div>
+      <div class="row"><label data-i18n="labelFontSize">字体大小</label><input type="range" id="pFont" min="10" max="20" step="1" value="13"><span id="pFontV">13px</span></div>
+      <div class="row"><label data-i18n="labelShowTitle">显示标题</label><input type="checkbox" id="pTitle" checked></div>
     </div>
-    <div class="sec"><h4>时钟</h4>
-      <div class="row"><label>显示时钟</label><input type="checkbox" id="pClock" checked></div>
-      <div class="row"><label>显示秒数</label><input type="checkbox" id="pSec" checked></div>
+    <div class="sec"><h4 data-i18n="sectionClock">时钟</h4>
+      <div class="row"><label data-i18n="labelShowClock">显示时钟</label><input type="checkbox" id="pClock" checked></div>
+      <div class="row"><label data-i18n="labelShowSeconds">显示秒数</label><input type="checkbox" id="pSec" checked></div>
     </div>
-    <div class="sec"><h4>背景</h4>
-      <div class="row"><label>背景类型</label><select id="pBgType"><option value="color">纯色</option><option value="image">图片</option></select></div>
-      <div class="row" id="bgColorRow"><label>背景颜色</label><input type="color" id="pBgColor" value="#1a1a2e"></div>
-      <div class="row" id="bgImgRow" style="display:none"><label>背景图片</label><input type="file" id="pBgImg" accept="image/jpeg,image/png,image/webp"></div>
-      <div class="row" id="bgBlurRow" style="display:none"><label>模糊</label><input type="range" id="pBlur" min="0" max="30" step="1" value="0"><span id="pBlurV">0px</span></div>
-      <div class="row"><label>遮罩透明度</label><input type="range" id="pOv" min="0" max="100" step="5" value="0"><span id="pOvV">0%</span></div>
+    <div class="sec"><h4 data-i18n="sectionBackground">背景</h4>
+      <div class="row"><label data-i18n="labelBgType">背景类型</label><select id="pBgType"><option value="color" data-i18n="optColor">纯色</option><option value="image" data-i18n="optImage">图片</option></select></div>
+      <div class="row" id="bgColorRow"><label data-i18n="labelBgColor">背景颜色</label><input type="color" id="pBgColor" value="#1a1a2e"></div>
+      <div class="row" id="bgImgRow" style="display:none"><label data-i18n="labelBgImage">背景图片</label><input type="file" id="pBgImg" accept="image/jpeg,image/png,image/webp"></div>
+      <div class="row" id="bgBlurRow" style="display:none"><label data-i18n="labelBlur">模糊</label><input type="range" id="pBlur" min="0" max="30" step="1" value="0"><span id="pBlurV">0px</span></div>
+      <div class="row"><label data-i18n="labelOverlay">遮罩透明度</label><input type="range" id="pOv" min="0" max="100" step="5" value="0"><span id="pOvV">0%</span></div>
     </div>
-    <div class="sec"><h4>搜索</h4>
-      <div class="row"><label>显示搜索框</label><input type="checkbox" id="pSearch" checked></div>
-      <div class="row"><label>搜索引擎</label><select id="pSE"><option value="https://www.google.com/search?q=">Google</option><option value="https://www.baidu.com/s?wd=">百度</option><option value="https://www.bing.com/search?q=">Bing</option></select></div>
+    <div class="sec"><h4 data-i18n="sectionSearch">搜索</h4>
+      <div class="row"><label data-i18n="labelShowSearch">显示搜索框</label><input type="checkbox" id="pSearch" checked></div>
+      <div class="row"><label data-i18n="labelSearchEngine">搜索引擎</label><select id="pSE"><option value="https://www.google.com/search?q=">Google</option><option value="https://www.baidu.com/s?wd=">百度</option><option value="https://www.bing.com/search?q=">Bing</option></select></div>
     </div>
-    <div class="sec"><h4>链接</h4>
-      <div class="row"><label>新标签页打开</label><input type="checkbox" id="pNewTab"></div>
+    <div class="sec"><h4 data-i18n="sectionLinks">链接</h4>
+      <div class="row"><label data-i18n="labelOpenInNewTab">新标签页打开</label><input type="checkbox" id="pNewTab"></div>
     </div>
-    <div class="sec"><h4>数据</h4>
-      <div class="row data-btns"><button id="pExport" class="btn btn-s">导出</button><button id="pImport" class="btn btn-s">导入</button><input type="file" id="pImportFile" accept=".json" style="display:none"></div>
-      <div class="row"><button id="pReset" class="btn btn-d" style="width:100%">恢复默认</button></div>
+    <div class="sec"><h4 data-i18n="sectionData">数据</h4>
+      <div class="row data-btns"><button id="pExport" class="btn btn-s" data-i18n="btnExport">导出</button><button id="pImport" class="btn btn-s" data-i18n="btnImport">导入</button><input type="file" id="pImportFile" accept=".json" style="display:none"></div>
+      <div class="row"><button id="pReset" class="btn btn-d" style="width:100%" data-i18n="btnReset">恢复默认</button></div>
     </div>
   </div>
 </div>
 <!-- 右键菜单 -->
 <div id="ctx" class="ctx">
-  <div class="ctx-item" data-a="edit">编辑</div>
-  <div class="ctx-item" data-a="del">删除</div>
+  <div class="ctx-item" data-a="edit" data-i18n="ctxEdit">编辑</div>
+  <div class="ctx-item" data-a="del" data-i18n="ctxDelete">删除</div>
 </div>
 <script src="app.js?v=26.06.01"></script>
 </body>
