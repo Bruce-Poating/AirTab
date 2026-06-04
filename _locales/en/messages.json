@@ -1,14 +1,14 @@
 {
   "extName": {
-    "message": "FlashTab - Blazing Fast New Tab",
+    "message": "AirTab - Ultra Light New Tab",
     "description": "Extension name"
   },
   "extDescription": {
-    "message": "Blazing fast, minimalist new tab with drag-and-drop shortcuts, search switching, backgrounds, clock, bookmark import & data backup.",
+    "message": "Say goodbye to bloat. Zero ads, ultra-low footprint, native architecture for instant launch. 100% local data.",
     "description": "Extension description"
   },
   "pageTitle": {
-    "message": "New Tab",
+    "message": "AirTab",
     "description": "Page title"
   },
   "searchPlaceholder": {

@@ -670,7 +670,7 @@ function initSettings() {
     var blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
     var a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = 'FlashTab-backup-' + new Date().toISOString().slice(0,10) + '.json';
+    a.download = 'AirTab-backup-' + new Date().toISOString().slice(0,10) + '.json';
     a.click(); URL.revokeObjectURL(a.href);
   });
   document.getElementById('pImport').addEventListener('click', function() {

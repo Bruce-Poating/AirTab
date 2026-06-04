@@ -5,7 +5,7 @@
   "description": "__MSG_extDescription__",
   "author": "Bruce-Poating",
   "default_locale": "zh_CN",
-  "homepage_url": "https://github.com/Bruce-Poating/FlashTab",
+  "homepage_url": "https://github.com/Bruce-Poating/AirTab",
   "chrome_url_overrides": {
     "newtab": "newtab.html"
   },

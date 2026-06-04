@@ -1,14 +1,14 @@
 {
   "extName": {
-    "message": "秒开页 - 极简极速新标签页",
+    "message": "AirTab 极轻标签页",
     "description": "Extension name"
   },
   "extDescription": {
-    "message": "极简极速的本地新标签页扩展，支持快捷网站拖拽管理、搜索引擎切换、背景自定义、时钟显示、收藏夹导入与数据备份。",
+    "message": "告别臃肿，轻如空气。零广告、极低占用、原生架构秒开体验，数据100%本地存储。",
     "description": "Extension description"
   },
   "pageTitle": {
-    "message": "秒开页",
+    "message": "AirTab",
     "description": "Page title"
   },
   "searchPlaceholder": {
