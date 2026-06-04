@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "__MSG_extName__",
-  "version": "26.06.01",
+  "version": "1.0.0",
   "description": "__MSG_extDescription__",
   "author": "Bruce-Poating",
   "default_locale": "zh_CN",
