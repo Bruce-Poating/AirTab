@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "FlashTab",
+  "version": "26.06.01",
+  "description": "轻量级本地自定义新标签页，支持快捷网站管理、搜索引擎切换、背景自定义、时钟显示、收藏夹导入与数据导入导出。",
+  "author": "Bruce-Poating",
+  "default_locale": "zh_CN",
+  "homepage_url": "https://github.com/Bruce-Poating/FlashTab",
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "permissions": [
+    "storage",
+    "favicon",
+    "bookmarks"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
